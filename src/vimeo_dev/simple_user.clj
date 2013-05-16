@@ -6,12 +6,17 @@
 (def base-url "http://vimeo.com/api/v2/%s/%s.json")
 
 (def ^:dynamic *user*)
+(def ^:dynamic *user-info*)
 
 (defmacro is [username & body]
   `(binding [*user* ~username]
      ~@body))
 
-(defn url [request & [page]]
+(defmacro info-is [user-info & body]
+  `(binding [*user-info* ~user-info]
+     ~@body))
+
+(defn -url [request & [page]]
   (let [request (.. request
                     (replace "-" "_"))
         url (format base-url
@@ -23,8 +28,8 @@
 
 (defn get-url [request & [page]]
   (let [url (if-not page
-              url
-              #(url % page))]
+              -url
+              #(-url % page))]
     (-> (name request)
         url
         clojure.java.io/reader
@@ -64,3 +69,66 @@
   (let [_ (partial get-url :groups)]
     (if-not page (_) (_ page))))
 
+(defn need [attribute]
+  (get *user-info*
+       (-> attribute
+           name
+           (.replace "-" "_"))))
+
+
+(defn id [] 
+  (need :id))
+
+(defn display-name []
+  (need :display-name))
+
+(defn created-on []
+  (need :created-on))
+
+(defn staff? []
+  (need :is-staff))
+
+(defn plus? []
+  (need :is-plus))
+
+(defn location []
+  (need :location))
+
+(defn url []
+  (need :url))
+
+(defn bio []
+  (need :bio))
+
+(defn profile-url []
+  (need :profile-url))
+
+(defn videos-url []
+  (need :videos-url))
+
+(defn total-videos-uploaded []
+  (need :total-videos-uploaded))
+
+(defn total-videos-appears-in []
+  (need :total-videos-appears-in))
+
+(defn total-videos-liked []
+  (need :total-videos-liked))
+
+(defn total-contact []
+  (need :total-contact))
+
+(defn total-albums []
+  (need :total-albums))
+
+(defn total-channels []
+  (need :total-channels))
+
+(defn portrait-small []
+  (need :portrait-small))
+
+(defn portrait-medium []
+  (need :portrait-medium))
+
+(defn portrait-large []
+  (need :portrait-large))

@@ -21,7 +21,6 @@
            name
            (.replace "-" "_"))))
       
-
 (defn title [] (need :title))
 
 (defn url [] (need :url))
@@ -66,7 +65,6 @@
 
 (defn status-number-of-comments []
   (need :status-number-of-comments))
-
 
 (defn duration [] (need :duration))
 
