@@ -1,4 +1,5 @@
 (ns vimeo-dev.simple-group
+  (:refer-clojure :exclude [name])
   (:use [cheshire.core 
          :only [parse-stream]]))
 
@@ -30,7 +31,7 @@
   (let [url (if-not page
               -url
               #(-url % page))]
-    (-> (name request)
+    (-> (clojure.core/name request)
         url
         clojure.java.io/reader
         parse-stream)))
@@ -50,7 +51,7 @@
 (defn need [attribute]
   (get *group-info*
        (-> attribute
-           name
+           clojure.core/name
            (.replace "-" "_"))))
 
 (defn id []

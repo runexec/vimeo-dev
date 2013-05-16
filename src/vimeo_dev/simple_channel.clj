@@ -1,4 +1,5 @@
 (ns vimeo-dev.simple-channel
+  (:refer-clojure :exclude [name])
   (:use [cheshire.core 
          :only [parse-stream]]))
 
@@ -30,7 +31,7 @@
   (let [url (if-not page
               -url
               #(-url % page))]
-    (-> (name request)
+    (-> (clojure.core/name request)
         url
         clojure.java.io/reader
         parse-stream)))
@@ -46,7 +47,7 @@
 (defn need [attribute]
   (get *channel-info*
        (-> attribute
-           name
+           clojure.core/name
            (.replace "-" "_"))))
 
 (defn id []
