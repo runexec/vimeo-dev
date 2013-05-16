@@ -4,4 +4,6 @@
             [vimeo-dev.simple-video
              :as video]
             [vimeo-dev.simple-activity
-             :as activity]))
+             :as activity]
+            [vimeo-dev.simple-group
+             :as group]))
