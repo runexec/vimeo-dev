@@ -7,7 +7,7 @@
 
 (def ^:dynamic *user*)
 
-(defmacro with [username & body]
+(defmacro is [username & body]
   `(binding [*user* ~username]
      ~@body))
 
