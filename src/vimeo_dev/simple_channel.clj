@@ -6,12 +6,17 @@
 (def base-url "http://vimeo.com/api/v2/channel/%s/%s.json")
 
 (def ^:dynamic *channel*)
+(def ^:dynamic *channel-info*)
 
 (defmacro is [channel-name & body]
   `(binding [*channel* ~channel-name]
      ~@body))
 
-(defn url [request & [page]]
+(defmacro info-is [channel-info & body]
+  `(binding [*channel-info* ~channel-info]
+     ~@body))
+
+(defn -url [request & [page]]
   (let [request (.. request
                     (replace "-" "_"))
         url (format base-url
@@ -23,8 +28,8 @@
 
 (defn get-url [request & [page]]
   (let [url (if-not page
-              url
-              #(url % page))]
+              -url
+              #(-url % page))]
     (-> (name request)
         url
         clojure.java.io/reader
@@ -38,3 +43,44 @@
   (let [_ (partial get-url :info)]
     (if-not page (_) (_ page))))
 
+(defn need [attribute]
+  (get *channel-info*
+       (-> attribute
+           name
+           (.replace "-" "_"))))
+
+(defn id []
+  (need :id))
+
+(defn name []
+  (need :name))
+
+(defn description []
+  (need :description))
+
+(defn logo []
+  (need :logo))
+
+(defn url []
+  (need :url))
+
+(defn rss []
+  (need :rss))
+
+(defn created-on []
+  (need :created-on))
+
+(defn creator-id []
+  (need :creator-id))
+
+(defn creator-display-name []
+  (need :creator-display-name))
+
+(defn creator-url []
+  (need :creator-url))
+
+(defn total-videos []
+  (need :total-videos))
+
+(defn total-subscribers []
+  (need :total-subscribers))
