@@ -8,4 +8,6 @@
             [vimeo-dev.simple-group
              :as group]
             [vimeo-dev.simple-channel
-             :as channel]))
+             :as channel]
+            [vimeo-dev.simple-album
+             :as album]))
