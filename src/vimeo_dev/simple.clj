@@ -6,4 +6,6 @@
             [vimeo-dev.simple-activity
              :as activity]
             [vimeo-dev.simple-group
-             :as group]))
+             :as group]
+            [vimeo-dev.simple-channel
+             :as channel]))
