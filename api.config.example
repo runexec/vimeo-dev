@@ -1,0 +1,5 @@
+# Rename me to api.config
+consumer-key XXXXXXX
+consumer-secret XXXXXX
+access-token XXXXXX
+access-token-secret XXXXXX
