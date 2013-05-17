@@ -41,8 +41,10 @@ Lein Dependency
 Load Vimeo Simple API 
 
 ```
+
 user> (use 'vimeo-dev.simple)
 nil
+
 user> (vimeo-dev.simple/load-simple-api)
 nil
 ```
@@ -50,51 +52,65 @@ nil
 #### User
 
 ```
+
 user> (def user-info
 	   (user/is "tylerwsmith" 
 		    (user/info)))
 #'user/user-info
+
 user> (first user-info)
 ["total_videos_liked" 374]
+
 user> (def video-page-1 
 	   (user/is "tylerwsmith"
 		    (user/videos)))
 #'user/video-page-1
+
 user> (def video-page-2
 	   (user/is "tylerwsmith"
 		    (user/videos 2)))
 #'user/video-page-2
+
 user> (first video-page-1)
 {"embed_privacy" "anywhere", "user_portrait_medium" ... removed for example ...}
+
 user> 
+
 user> (def likes-page-2
 	   (user/is "tylerwsmith"
 		    (user/likes 2)))
 #'user/likes-page-2
+
 user> (def appears-in-page-2
 	   (user/is "tylerwsmith"
 		    (user/appears-in 2)))
 #'user/appears-in-page-2
+
 user> (def all-videos-page-2
       	   (user/is "tylerwsmith"
 	   		    (user/all-videos 2)))
 #'user/all-videos-page-2
+
 user> (def subscriptions-page-2
 	   (user/is "tylerwsmith"
 		    (user/subscriptions 2)))
 #'user/subscriptions-page-2
+
 user> (def albums-page-2
 	   (user/is "tylerwsmith"
 		    (user/albums 2)))
 #'user/albums-page-2
+
 user> (def channels-page-2
 	   (user/is "tylerwsmith"
 		    (user/channels 2)))
 #'user/channels-page-2
+
 user> (def groups-page-2
 	   (user/is "tylerwsmith"
 		    (user/groups 2)))
 #'user/groups-page-2
+
 user> (user/is "tylerwsmith"
                ;; unlimited arguments for user/is *userid*
                ;; unlimited arguments for user/info-is *userinfo*
@@ -126,6 +142,7 @@ nil
 #### User Activity
 
 ```
+
 user> (user/is "tylerwsmith"
 	       (let [did-page-2 (activity/user-did 2)
 				to-user-page-2 (activity/happened-to-user 2)
@@ -139,37 +156,52 @@ user> (user/is "tylerwsmith"
 #### Video
 
 ```
+
 user> (video/is "66222538" (video/title))
 "POINTLESS #23"
+
 user> (video/is "66222538" (video/url))
 "http://vimeo.com/66222538"
+
 user> (video/is "66222538" (video/id))
 66222538
+
 user> (video/is "66222538" (video/description))
 ""
+
 user> (video/is "66222538" (video/thumbnail-small))
 "http://b.vimeocdn.com/ts/437/536/437536915_100.jpg"
+
 user> (video/is "66222538" (video/thumbnail-medium))
 "http://b.vimeocdn.com/ts/437/536/437536915_200.jpg"
+
 user> (video/is "66222538" (video/thumbnail-large))
 "http://b.vimeocdn.com/ts/437/536/437536915_640.jpg"
+
 user> (video/is "66222538" (video/user-name))
 "Brian Redban"
+
 user> (video/is "66222538" (video/user-url))
 "http://vimeo.com/redban"
+
 user> (video/is "66222538" (video/upload-date))
 "2013-05-15 03:40:29"
+
 user> (video/is "66222538" (video/user-portrait-small))
 "http://b.vimeocdn.com/ps/828/828752_30.jpg"
+
 user> (video/is "66222538" (video/user-portrait-medium))
 "http://b.vimeocdn.com/ps/828/828752_75.jpg"
+
 user> (video/is "66222538" (video/user-portrait-large))
 "http://b.vimeocdn.com/ps/828/828752_100.jpg"
+
 user> (video/is "66222538" 
 		{:likes (video/status-number-of-likes)
 		 :views (video/status-number-of-views)
 		 :comments (video/status-number-of-comments)})
 {:likes nil, :views nil, :comments nil}
+
 user> (video/is "66222538" 
 		(println "Video is " (video/duration)
 			 "\n w x h = " 
@@ -185,6 +217,7 @@ nil
 #### Group
 
 ```
+
 user> (group/is "shortfilms"
 		(let [v-page-1 (group/videos)
 		      v-page-2 (group/videos 2)
@@ -194,6 +227,7 @@ user> (group/is "shortfilms"
 		      
        
 ["total_upcoming_events" 0]
+
 user> (group/is "shortfilms"
                ;; unlimited arguments for group/is *groupid*
                ;; unlimited arguments for group/info-is *groupinfo*
@@ -222,6 +256,7 @@ nil
 #### Channel 
 
 ```
+
 user> (channel/is "146809"
 		  (let [videos-page-1 (channel/videos)
 			videos-page-2 (channel/videos 2)
@@ -229,6 +264,7 @@ user> (channel/is "146809"
 		    (first info)))
 
 ["badge" ""]
+
 user> (channel/is "146809"
 		  (channel/info-is (channel/info)
 				   (let [id (channel/id)
@@ -251,6 +287,7 @@ nil
 #### Album
 
 ```
+
 user> (album/is "2292509"
 		(let [page-3 (album/videos 3)
 		      info (album/info)]
@@ -278,8 +315,10 @@ Advanced API calls are easier than you might think. Using the request form, the 
 <p>Let's make a call for vimeo.categories.getAll => https://developer.vimeo.com/apis/advanced/methods/vimeo.categories.getAll</p>
 
 ```
+
 user> (use 'vimeo-dev.advanced)
 nil
+
 user> (request :vimeo.categories.getAll 
 	       {:page 1 :per_page 3})
 		      
