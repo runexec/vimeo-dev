@@ -7,9 +7,9 @@ This Clojure library supports both the simple and advanced Vimeo APIs.
 
 # Documentation
 
-0. Install Vimeo-dev
-1. Simple API Examples
-2. Advanced API Examples 
+0. [Install Vimeo-dev](#installation)
+1. [Simple API Examples](#simple-api-examples)
+2. [Advanced API Examples](#advanced-api-examples)
 
 # Installation
 
@@ -28,13 +28,13 @@ Lein Dependency
 
 # Simple API Examples 
 
-1. Init
-2. User
-3. User Activity
-4. Video
-6. Group
-7. Channel
-8. Album 
+1. [Init](#init)
+2. [User](#user)
+3. [User Activity](#user-activity)
+4. [Video](#video)
+6. [Group](#group)
+7. [Channel](#channel)
+8. [Album](#album)
 
 #### Init
 
