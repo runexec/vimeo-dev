@@ -10,6 +10,7 @@ This Clojure library supports both the simple and advanced Vimeo APIs.
 0. [Install Vimeo-dev](#installation)
 1. [Simple API Examples](#simple-api-examples)
 2. [Advanced API Examples](#advanced-api-examples)
+3. [Vanity](#vanity)
 
 # Installation
 
@@ -325,6 +326,23 @@ user> (request :vimeo.categories.getAll
 {"generated_in" "0.0178", "stat" "ok", "categories" {"on_this_page" "3", "page" "1", "perpage" "3", "total" "18", "category" ... removed for example ... }
 ```
 
+# Vanity
+
+```
+|                           :source | :LOC | :comment | :blank |
+|-----------------------------------+------+----------+--------|
+| src/vimeo_dev/simple_activity.clj |   35 |        1 |      8 |
+|     src/vimeo_dev/simple_user.clj |   97 |        1 |     36 |
+|    src/vimeo_dev/simple_video.clj |   52 |        0 |     23 |
+|    src/vimeo_dev/simple_group.clj |   76 |        1 |     26 |
+|        src/vimeo_dev/advanced.clj |   56 |        0 |      4 |
+|  src/vimeo_dev/simple_channel.clj |   65 |        1 |     21 |
+|          src/vimeo_dev/simple.clj |   15 |        0 |      1 |
+|    src/vimeo_dev/simple_album.clj |   62 |        1 |     20 |
+|                 - Subtotal Source |  458 |        5 |    139 |
+|      test/vimeo_dev/core_test.clj |    6 |        0 |      1 |
+|                           - Total |  464 |        5 |    140 |
+```
 
 ## License
 
